@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slide de Agradecimento</title>
+<style>
+  body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+background-image: url(imagem/74c2c061-7abb-4e6c-b247-7bdefea2fc60.jpeg);    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-size:cover;
+    height: 500px;
+  }
+  h1{
+    text-transform: uppercase;
+    color:orangered ;
+
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0px;
+    color: gold;
+    text-transform: uppercase;
+    font-size: 20px;
+    font: 1em sans-serif;
+
+
+
+    background-color: transparent; /* Cor de fundo do contêiner */
+  }
+  .container 
+  h1{
+ width: 100%;
+
+  }
+  #message {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  #response {
+    font-size: 50px;
+    margin-top: 20px;
+    color: red;
+  }
+  .fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+</style>
+</head>
+<body>
+<div class="container">
+  <h1><b>Manifesto de Gratidão à Professora Simone</b></h1>
+  <div id="message"></div>
+  <div id="response"></div>
+  <button onclick="showNextMessage()">Próxima Mensagem, Chocolate 🍫 ou Dancinha 💃?</button>
+</div>
+<div id="responseElement"></div>
+
+<script>
+  const messages = [
+    "Obrigado por nos guiar com tanta dedicação e carinho, professora Simone! - Gleice",
+    "Seu entusiasmo pela matéria nos inspira a sempre buscar o melhor! - Kaila",
+    "Suas aulas foram incríveis, aprendi muito! - Mariana",
+    "Sua paciência é admirável, professora Simone! - Alice ",
+    "Nunca me senti tão motivado a aprender como em suas aulas! - Ângela",
+    "Você faz a diferença na minha jornada de aprendizado, professora Simone! - Audrey",
+    "Obrigado por nos desafiar a cada aula, professora Simone! - Caroline",
+    "Sua dedicação é inspiradora, professora Simone! - Barbara",
+    "Aprendi mais do que esperava em suas aulas, obrigado! - Adriana",
+    "Suas explicações são sempre tão claras, professora Simone! - Edna",
+    "Nunca vi alguém ensinar com tanto entusiasmo como você, professora Simone! - Elina",
+    "Sua didática é incrível, professora Simone! - Elizabete",
+    "Obrigado por tornar a aprendizagem tão divertida, professora Simone! - Estefane",
+    "Você é uma professora excepcional, professora Simone! - Gleidson",
+    "Sua paixão pelo ensino é inspiradora, professora Simone! - Jamile",
+    "Agradeço por compartilhar seu conhecimento conosco, professora Simone! - Jucileide",
+    "Sinto-me mais confiante em relação ao assunto graças a você, professora Simone! - Marileide",
+    "Obrigado por nos desafiar a pensar além do óbvio, professora Simone! - Zelia",
+    "Você é uma verdadeira mentora, professora Simone! - Rian",
+    "Suas aulas são sempre tão envolventes, professora Simone! - Silas",
+    "Nunca pensei que aprenderia tanto em uma disciplina, obrigado, professora Simone! - Ivan",
+    "Você nos inspira a buscar conhecimento além da sala de aula, professora Simone! - Lidiane",
+    "Obrigado por sua dedicação em nos ajudar a alcançar nosso potencial, professora Simone! - Denise"
+  ];
+
+  let currentMessageIndex = 0;
+  let currentStudentName = '';
+
+  function showNextMessage() {
+    if (currentMessageIndex < messages.length) {
+      const message = messages[currentMessageIndex].split(' - ')[0];
+      currentStudentName = messages[currentMessageIndex].split(' - ')[1];
+      document.getElementById('message').innerText = message;
+      document.getElementById('response').innerText = '';
+      setTimeout(() => {
+        const guess = prompt("Quem escreveu essa mensagem?");
+        checkGuess(guess);
+      }, 5000); // Espera 5 segundos antes de pedir a resposta
+      currentMessageIndex++;
+    } else {
+      alert("Todas as mensagens foram mostradas!");
+    }
+  }
+
+  function checkGuess(guess) {
+    const responseElement = document.getElementById('response');
+    
+    if (guess && guess.toLowerCase() === currentStudentName.toLowerCase()) {
+      responseElement.innerText = `Parabéns, você acertou! ${currentStudentName} escreveu a mensagem. Simone ganhará um chocolate!`;
+    } else {
+      responseElement.innerText = `Você errou! ${currentStudentName} escreveu a mensagem. Simone precisará fazer uma dancinha!`;
+    }
+  }
+  function checkGuess(guess) {
+  const responseElement = document.getElementById('response');
+  
+  if (guess && guess.toLowerCase() === currentStudentName.toLowerCase()) {
+    responseElement.innerText = `Parabéns, você acertou! ${currentStudentName}escreveu a mensagem. Simone ganhará um chocolate !`;
+  } else {
+    responseElement.innerText = `Você errou! ${currentStudentName} escreveu a mensagem. Simone precisará fazer uma dancinha💃!`;
+    responseElement.classList.add('fade-in'); // Adiciona a classe de fade-in à resposta
+  }
+}
+
+</script>
+</body>
+</html>
